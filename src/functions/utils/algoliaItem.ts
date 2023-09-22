@@ -2,6 +2,7 @@ import { Elements, ElementType, IContentItem } from "@kontent-ai/delivery-sdk";
 
 export type AlgoliaItem = Readonly<{
   id: string;
+  elements: Object;
   objectID: string;
   codename: string;
   name: string;
@@ -31,6 +32,7 @@ const createObjectId = (itemCodename: string, languageCodename: string) => `${it
 export const convertToAlgoliaItem =
   (allItems: ReadonlyMap<string, IContentItem>, expectedSlug: string) => (item: IContentItem): AlgoliaItem => ({
     id: item.system.id,
+    elements: item.elements,
     type: item.system.type,
     codename: item.system.codename,
     collection: item.system.collection,
